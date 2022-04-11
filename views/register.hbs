@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-form-container">
+
+        <div id="close-login-btn" class="fas fa-times"></div>
+
+        <form action="/register" method="post">
+            <center><h2 style="color: red;">{{errorMsg}}</h2></center>
+            <h3>Register</h3>
+            <span>Username</span>
+            <input type="text" name="txtUser" class="box" placeholder="enter your Name" id="txtUser">
+            <span>Email</span>
+            <input type="email" name="txtMail" class="box" placeholder="enter your Email" id="txtMail">
+            <span>Full Name</span>
+            <input type="text" name="txtName" class="box" placeholder="enter your full Name" id="txtName">
+            <span>Phone Number</span>
+            <input type="text" name="txtPhone" class="box" placeholder="enter your phone" id="txtPhone">
+            <span>Password</span>
+            <input type="password" name="txtPass" class="box" placeholder="enter your Password" id="txtPass">
+            <span>Re-Password</span>
+            <input type="password" name="txtRePass" class="box" placeholder="enter your Re-Password" id="txtRePass">
+            <div class="login__decentralization">
+                <select name="Role" class="decentralization" id="Role">
+                    <option value="Admin">Admin</option>
+                    <option value="Customer">Customer</option>
+                </select>
+            </div>
+            <button type="submit" value="Register" class="btn"> <a href="/"></a> Register</button>
+            <p><a href="/login">Login</a></p>
+        </form>
+
+    </div>
+
+</body>
+<!-- custom js file link  -->
+
+
+</html>

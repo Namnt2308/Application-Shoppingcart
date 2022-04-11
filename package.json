@@ -1,0 +1,26 @@
+{
+  "name": "application-shoppingcart",
+  "version": "1.0.0",
+  "description": "\"# Application-Shoppingcart\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Namnt2308/Application-Shoppingcart.git"
+  },
+  "author": "tiennam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Namnt2308/Application-Shoppingcart/issues"
+  },
+  "homepage": "https://github.com/Namnt2308/Application-Shoppingcart#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "mongodb": "^4.5.0"
+  }
+}
