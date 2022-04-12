@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Namnt2308/Application-Shoppingcart#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "hbs": "^4.2.0",
