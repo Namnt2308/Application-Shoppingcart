@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form action="/admin/updatebook" method="post">
+            <h3>Add Book</h3>
+            <input type="hidden" name="txtid" value="{{book._id}}">
+            <span>Name </span>
+            <input type="text" name="txtName" class="box" id="txtName" value="{{book.name}}">
+            <span>Description</span>
+            <input type="text" name="txtDescription" class="box" id="txtDescription" value="{{book.des}}">
+            <span>Price</span>
+            <input type="text" name="txtPrice" class="box" id="txtPrice" value="{{book.price}}">
+            <span>Image</span>
+            <input type="text" name="txtImage" class="box" id="txtImage" value="{{book.pic}}" >
+
+            <div class="login__decentralization">
+                <select name="Category" class="decentralization" id="Category">
+                    <option value="Comic">Comic</option>
+                    <option value="IT Book">IT Book</option>
+                </select>
+            </div>
+            <button type="submit" value="updatebook" class="btn"> <a href="/"></a> Update </button>
+        </form>
+</body>
+</html>

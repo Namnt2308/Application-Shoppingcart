@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form action="/admin/addbook" method="post">
+            <h3>Add Book</h3>
+            <span>Name</span>
+            <input type="text" name="txtName" class="box" placeholder="enter Book" id="txtName">
+            <span>Description</span>
+            <input type="text" name="txtDescription" class="box" placeholder="enter Description" id="txtDescription">
+            <span>Price</span>
+            <input type="text" name="txtPrice" class="box" placeholder="enter Price" id="txtPrice">
+            <span>Image</span>
+            <input type="text" name="txtImage" class="box" placeholder="enter Image" id="txtImage">
+
+            <div class="login__decentralization">
+                <select name="Category" class="decentralization" id="Category">
+                    <option value="Comic">Comic</option>
+                    <option value="IT Book">IT Book</option>
+                </select>
+            </div>
+            <button type="submit" value="addbook" class="btn"> <a href="/"></a> Add </button>
+        </form>
+</body>
+</html>

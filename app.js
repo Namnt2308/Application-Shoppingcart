@@ -124,17 +124,11 @@ app.post("/register", async (req, res) => {
   }
 });
 
-//cac request co chua /admin se di den controller customer
-const userController = require("./controllers/customer");
-app.use("/", userController);
-
 //cac request co chua /admin se di den controller admin
 const adminController = require("./controllers/admin");
 app.use("/admin", adminController);
 
-const feedbackController = require("./controllers/feedback");
-const async = require("hbs/lib/async");
-app.use("/feedback", feedbackController);
+
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT);
