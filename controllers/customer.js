@@ -26,3 +26,17 @@ router.get("/", async (req, res) => {
     });
   }
 });
+router.get("/details", async (req, res) => {
+    const id = req.query.id;
+    const result = await dbHandler.getDocumentById(id, "Book");
+    const category = await dbHandler.getDocumentById(result.category, "Category");
+    if (!req.session.user) {
+      res.render("product_Detail", { details: result, category: category });
+    } else {
+      res.render("product_Detail", {
+        details: result,
+        category: category,
+        user: req.session.user,
+      });
+    }
+  });
