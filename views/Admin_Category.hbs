@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show Category</title>
+</head>
+<body>
+     <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Category ID</th>
+                                                <th>Category Name</th>
+                                        </thead>
+                                        <tbody>
+                                            {{#each category}}
+                                            <tr>
+                                                <td>{{_id}}</td>
+                                                <td>{{name}}</td>
+                                                <!-- <td class="Online">Online</td> -->
+                                                <td class="Upadte"> <a href="/admin/updatebook?id={{_id}}">Update</a> </td>
+                                                <td class=" Delete"><a href="/admin/deletebook?id={{_id}}">Delete</a> </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+</body>
+</html>

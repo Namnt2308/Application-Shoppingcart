@@ -98,6 +98,22 @@ router.get('/deletebook', async (req, res) => {
     await dbHandler.deleteDocumentById("Book", id)
     res.redirect('/admin/product')
 })
+//add category
+router.get('/addcategory',async (req, res)=>{
+    res.render("AddCategory")
+})
+router.post('/addcategory', async (req, res) => {
+    const nameInput = req.body.txtName
+    const newCategory = {name:nameInput}
+    await dbHandler.insertObject("Category", newCategory)
+    res.redirect('/admin/category')
+})
+router.get('/category', async (req, res) => {
+    const category = await dbHandler.getAll("Category")
+
+    res.render("Admin_Category", {category:category})
+    
+});
 //update book in product
 router.get('/updatebook', async (req, res) => {
     const id = req.query.id
@@ -119,6 +135,20 @@ router.post('/updatebook', async (req, res) => {
     res.redirect('/admin/product')
 })
 //update profile for admin
+
+router.get('/updateprofile', async (req, res)=>{
+    const result = await dbHandler.getUser(req.session.user.name)
+    res.render('Updateprofileadmin', {user:result})
+})
+router.post("/updateprofile", async (req,res)=>{
+    const phone = req.body.txtPhone
+    const fullName = req.body.txtName
+    const email = req.body.txtEmail
+    const user = await dbHandler.getUser(req.session.user.name)
+    const updateValue = {$set: {userName: user.userName, email: email, Name: fullName, phone: phone, role: user.role, password: user.password}}
+    await dbHandler.updateDocument(user._id, updateValue, "Users")
+    res.redirect('/admin')
+})
 
 
 module.exports = router;
