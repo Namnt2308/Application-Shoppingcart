@@ -5,27 +5,126 @@ const router = express.Router();
 router.use(express.static("public"));
 
 router.get("/", async (req, res) => {
-  const truyen = await dbHandler.searchObjectbyCategory(
+  const comic = await dbHandler.searchObjectbyCategory(
     "Book",
-    "61e570c7ba41b21dee1346b3"
+    "62572ba5513e4209ef0caece"
   );
   const ITbook = await dbHandler.searchObjectbyCategory(
     "Book",
-    "61e570ddba41b21dee1346b4"
+    "62572bb6513e4209ef0caecf"
   );
   const hotBook = await dbHandler.searchHotBooks();
-
+  const Action= await dbHandler.searchObjectbyCategory(
+    "Book",
+    "625735817c737dcc7158fc7c"
+  );
   if (!req.session.user) {
-    res.render("index", { truyens: truyen, ITbooks: ITbook, hotBook: hotBook });
+    res.render("index", { comics: comic, ITbooks: ITbook, hotBook: hotBook,Action:Action });
   } else {
     res.render("index", {
-      truyens: truyen,
+      comics: comic,
       ITbooks: ITbook,
       hotBook: hotBook,
+      Action:Action,
       user: req.session.user,
     });
   }
 });
+
+router.get("/search", async (req, res) => {
+  const comic = await dbHandler.searchObjectbyCategory(
+    "Book",
+    "62572ba5513e4209ef0caece"
+  );
+  const ITbook = await dbHandler.searchObjectbyCategory(
+    "Book",
+    "62572bb6513e4209ef0caecf"
+  );
+  const Action= await dbHandler.searchObjectbyCategory(
+    "Book",
+    "625735817c737dcc7158fc7c"
+  );
+  const searchInput = req.query.searchInput;
+  if (isNaN(Number.parseFloat(searchInput)) == false) {
+    await SearchObject(
+      req,
+      searchInput,
+      res,
+      comic,
+      ITbook,
+      Action,
+      dbHandler.searchObjectbyPrice,
+      "Book",
+      Number.parseFloat(searchInput),
+      " VND"
+    );
+  } else {
+    await SearchObject(
+      req,
+      searchInput,
+      res,
+      comic,
+      ITbook,
+      Action,
+      dbHandler.searchObjectbyName,
+      "Book",
+      searchInput,
+      ""
+    );
+  }
+});
+
+async function SearchObject(
+  req,
+  searchInput,
+  res,
+  comic,
+  ITbook,
+  Action,
+  dbFunction,
+  collectionName,
+  searchInput,
+  mess
+) {
+  const resultSearch = await dbFunction(collectionName, searchInput);
+  if (resultSearch.length != 0) {
+    if (!req.session.user) {
+      res.render("search", {
+        searchBook: resultSearch,
+        comics: comic,
+        ITbooks: ITbook,
+      });
+    } else {
+      res.render("search", {
+        searchBook: resultSearch,
+        comics: comic,
+        ITbooks: ITbook,
+        Action:Action,
+        user: req.session.user,
+      });
+    }
+  } else {
+    if (!req.session.user) {
+      const message = "Not found " + searchInput + mess;
+      res.render("search", {
+        comics: comic,
+        ITbooks: ITbook,
+        Action:Action,
+        errorSearch: message,
+      });
+    } else {
+      const message = "Not found " + searchInput + mess;
+      res.render("search", {
+        comics: comic,
+        ITbooks: ITbook,
+        Action:Action,
+        errorSearch: message,
+        user: req.session.user,
+      });
+    }
+  }
+}
+
 router.get("/details", async (req, res) => {
   const id = req.query.id;
   const result = await dbHandler.getDocumentById(id, "Book");
@@ -40,86 +139,5 @@ router.get("/details", async (req, res) => {
     });
   }
 });
-router.get("/search", async (req, res) => {
-  const truyen = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "61e570c7ba41b21dee1346b3"
-  );
-  const ITbook = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "61e570ddba41b21dee1346b4"
-  );
-  const searchInput = req.query.searchInput;
-  if (isNaN(Number.parseFloat(searchInput)) == false) {
-    await SearchObject(
-      req,
-      searchInput,
-      res,
-      truyen,
-      ITbook,
-      dbHandler.searchObjectbyPrice,
-      "Book",
-      Number.parseFloat(searchInput),
-      " VND"
-    );
-  } else {
-    await SearchObject(
-      req,
-      searchInput,
-      res,
-      truyen,
-      ITbook,
-      dbHandler.searchObjectbyName,
-      "Book",
-      searchInput,
-      ""
-    );
-  }
-});
 
-async function SearchObject(
-  req,
-  searchInput,
-  res,
-  truyen,
-  ITbook,
-  dbFunction,
-  collectionName,
-  searchInput,
-  mess
-) {
-  const resultSearch = await dbFunction(collectionName, searchInput);
-  if (resultSearch.length != 0) {
-    if (!req.session.user) {
-      res.render("search", {
-        searchBook: resultSearch,
-        truyens: truyen,
-        ITbooks: ITbook,
-      });
-    } else {
-      res.render("search", {
-        searchBook: resultSearch,
-        truyens: truyen,
-        ITbooks: ITbook,
-        user: req.session.user,
-      });
-    }
-  } else {
-    if (!req.session.user) {
-      const message = "Not found " + searchInput + mess;
-      res.render("search", {
-        truyens: truyen,
-        ITbooks: ITbook,
-        errorSearch: message,
-      });
-    } else {
-      const message = "Not found " + searchInput + mess;
-      res.render("search", {
-        truyens: truyen,
-        ITbooks: ITbook,
-        errorSearch: message,
-        user: req.session.user,
-      });
-    }
-  }
-}
+module.exports = router;
