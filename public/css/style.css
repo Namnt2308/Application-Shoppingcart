@@ -589,7 +589,16 @@ section{
     height: 3rem;
     display: block;
 }
-
+.payment-form {
+    margin-bottom: 40px;
+  }
+  
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
 .footer .credit{
     text-align: center;
     margin-top: 2rem;
