@@ -41,6 +41,34 @@ router.get('/', async (req, res) => {
     // }
 }})
 
+
+router.get('/deleteCustomer/:id', async(req, res) => {
+    console.log(req.params.id)
+    await dbHandler.deleteDocumentById('Users', req.params.id);
+    res.redirect('/admin/manageCustomer')
+    
+})
+router.get('/deleteCustomer', async(req, res) => {
+    res.send("deleteCustomer")
+})
+
+
+router.get('/manageCustomer', async (req, res) => {
+    result = await dbHandler.getAll("Users");
+    const arr = result.filter((element) => {
+        return element.role === 'Customer'
+    });
+    arr.forEach((element, index) => {
+        element.index = index+1;
+        delete element.password;
+        delete element.role;
+    })
+    res.render('adminPage', { Customer: arr})//truyền vào property Customer với values =arr
+    
+})
+
+
+
 // /deleteCustomer/abcxyz
 router.get('/deleteCustomer/:id', async(req, res) => {
     await dbHandler.deleteDocumentById('Users', req.params.id);//dugf dDBI để xóa 1 doc với tham số là req.pấm.id
