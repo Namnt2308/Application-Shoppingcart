@@ -75,8 +75,6 @@ router.get('/deleteCustomer/:id', async(req, res) => {
     res.redirect('/admin/manageCustomer')
     
 })
-
-
 //neu request la: /admin/addUser
 router.get('/addUser', (req, res) => {
     res.send("This is add user page!")
