@@ -97,26 +97,33 @@
 
 <!-- products section starts  -->
 
-<section class="products" id="products">
+<section class="arrivals" id="arrivals">
 
-    <h1 class="heading"> our <span>products</span> </h1>
-
-    <div class="swiper product-slider">
-
-        <div class="swiper-wrapper">
-
-        {{#each book}}
-            <a href="/details?id={{_id}}" class="swiper-slide box">
-                <img src="{{pic}}" alt="">
-                <h3>{{name}}</h3>
-                <div class="price">Price: {{price}}$</div>
-                
-            </a>
-
-            {{/each}}
+        <h1 class="heading"> <span>ALL PRODUCT</span> </h1>
+        <div class="swiper arrivals-slider">
+            {{#each comics}}
+            <div class="swiper-slide box">
+                <a href="/details?id={{_id}}" class="swiper-slide box">
+                    <div class="image">
+                        <img src="{{pic}}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{name}}</h3>
+                        <div class="price">{{price}}</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </a>
+               
+            </div>
+             {{/each}}
         </div>
-    </div>
-</section>
+
 
 <!-- products section ends -->
 
