@@ -61,6 +61,8 @@ router.get("/viewCart", async (req, res) => {
       orderP: orderP,
     });
   });
-  
-  
-  
+  router.get("/viewProfile", async (req, res) => {
+    const user = await dbHandler.getUser(req.session.user.name);
+    res.render("profile", { user: user });
+});
+
