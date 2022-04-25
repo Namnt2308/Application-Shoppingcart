@@ -66,3 +66,7 @@ router.get("/viewCart", async (req, res) => {
     res.render("profile", { user: user });
 });
 
+router.get("/updateProfile", async (req, res) => {
+    const user = await dbHandler.getUser(req.session.user.name);
+    res.render("UpDateProfile", { user: user });
+  });
