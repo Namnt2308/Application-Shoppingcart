@@ -52,5 +52,15 @@ router.get("/viewCart", async (req, res) => {
     req.session["cart"] = null;
     res.redirect("/shoppingCart/viewCart");
   });
+  router.get("/productOder", async (req, res) => {
+    const orderID = req.query.orderID;
+    const orderP = await dbHandler.getDocumentById(orderID, "Customer Order");
+    console.log(orderP, req.session.user);
+    res.render("productOder", {
+      user: req.session.user,
+      orderP: orderP,
+    });
+  });
+  
   
   
