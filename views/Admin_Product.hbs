@@ -7,9 +7,9 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="admin.css"> />
+    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!--fonts-->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,400;1,500;1,600;1,700;&display=swap" rel="stylesheet"> -->
 
@@ -23,7 +23,7 @@
             <div class="sidebar">
                 <div class="logo">
                     <div class="d-flex justify-content-center align-items-center">
-                        <img src="./images/logo.svg" alt="logo" class="logo-img mr-3">
+                        <img src="https://fpt-fti.com/wp-content/uploads/2020/12/LogoFPT.png" alt="logo" class="logo-img mr-3">
                         <div class="logo-text">
                             FPTBOOK
                         </div>
@@ -31,11 +31,11 @@
                 </div>
                 <div class="user-info d-flex">
                     <div>
-                        <img src="./images/man.svg" alt="user-img" class="user-img">
+                        <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" alt="user-img" class="user-img">
                     </div>
                     <div class="d-flex flex-column">
-                        <h5>M5Micheal</h5>
-                        <p>Namdhgch190700@fpt.edu.vn</p>
+                        
+                        <p>Namntgch190885@fpt.edu.vn</p>
                     </div>
                 </div>
                 <ul class="nav flex-column menu-link">
@@ -45,13 +45,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><img src="./images/shopping-bag.svg" alt="dashboard">Orders</a>
+                        <a href="#" class="nav-link">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><img src="./images/user.svg" alt="dashboard">Customers</a>
+                        <a href="#" class="nav-link">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/addbook" class="nav-link"><img src="./images/user.svg" alt="dashboard">Add Book</a>
+                        <a href="/admin/addbook" class="nav-link">Add Book</a>
                     </li>
                     <!-- <li class="nav-item">
                                     <a href="#" class="nav-link"><img src="./images/cog.svg"
@@ -65,79 +65,18 @@
                 <div class="top-bar d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
                         <div>
-                            <img src="./images/menu.svg" alt="menu" onclick="toggle()" class="toggler">
-                        </div>
-                        <!-- <div class="search-bar">
-                                          <input type="text" placeholder="Search Something..." class="global-search">
-                                          <img src="./images/search.svg" alt="" class="search-icon" />
-                                    </div> -->
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="icon-btn">
-                            <img src="./images/notification.svg" alt="notification" />
-                        </div>
-                        <div class="icon-btn">
-                            <img src="./images/setting.svg" alt="settings" />
-                        </div>
-                        <div class="log-btn d-flex align-items-center">
-                            <div>
-                                <img src="./images/man.svg" alt="">
-                            </div>
-                            <div>
-                                <h6>M5Micheal</h6>
-                                <p>Super Admin</p>
-                            </div>
+                            <img src="/public/image/menu.svg" alt="menu" onclick="toggle()" class="toggler">
                         </div>
                     </div>
+                    
+                    
                 </div>
 
 
                 <div class="inner-section">
                     <h2 class="page-title">Dashboard</h2>
-                    <div class="row">
-                        <div class="col-md-7 col-lg-7 col-xl-4 col-12">
-                            <div class="dash-card d-flex align-items-center">
-                                <div class="img-box order-box d-flex align-items-center justify-content-center mr-5">
-                                    <img src="./images/cart.svg" alt="cart" />
-                                </div>
-                                <div class="dash-content">
-                                    <h4>Orders</h4>
-                                    <p>1000+</p>
-                                </div>
-                            </div>
+                     <a href="/admin/addbook" class="btn btn-primary">Add Book</a>
                         </div>
-                        <div class="col-md-7 col-lg-7 col-xl-4 col-12">
-                            <div class="dash-card d-flex align-items-center">
-                                <div class="img-box customer-box d-flex align-items-center justify-content-center mr-5">
-                                    <img src="./images/customers.svg" alt="customers" />
-                                </div>
-                                <div class="dash-content">
-                                    <h4>Customers</h4>
-                                    <p>500+</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-lg-7 col-xl-4 col-12">
-                            <div class="dash-card d-flex align-items-center">
-                                <div class="img-box product-box d-flex align-items-center justify-content-center mr-5">
-                                    <img src="./images/product.svg" alt="cart" />
-                                </div>
-                                <div class="dash-content">
-                                    <h4>Products</h4>
-                                    <p>700+</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="container-fluid">
-                            <div class="dash-card">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4>Products</h4>
-                                    <img src="./images/more.svg" alt="more" />
-                                </div>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
@@ -148,8 +87,8 @@
                                                 <th>Image</th>
                                                 <th>Description</th>
                                                 <!-- <th>Status</th> -->
-                                                <th>Operation</th>
-                                                <th>Operation</th>
+                                                <th>Menu</th>
+                                                <th>Menu</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -157,14 +96,13 @@
                                             <tr>
                                                 <td>{{_id}}</td>
                                                 <td>{{name}}</td>
-                                                <td>{{price}}</td>
+                                                <td>{{price}}$</td>
                                                 <td>
                                                     <div class="image"><img style="width: 100px; height: 100px"  src="{{pic}}" alt=""></div>
                                                 </td>
                                                 <td>{{des}}</td>
-                                                <!-- <td class="Online">Online</td> -->
-                                                <td class="Upadte"> <a href="/admin/updatebook?id={{_id}}">Update</a> </td>
-                                                <td class=" Delete"><a href="/admin/deletebook?id={{_id}}">Delete</a> </td>
+                                                <td class="Upadte"><a class="btn btn-success" style="margin-right:5px;flex:1" href="/admin/updatebook?id={{_id}}">Edit</a> </td>
+                                                <td class="Delete"><a class="btn btn-danger" style="margin-right:5px;flex:1" onclick="return confirm('Are your sure?')" href="/admin/deletebook?id={{_id}}">Delete</a></td>
                                             </tr>
                                             {{/each}}
                                         </tbody>
@@ -174,11 +112,7 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
     </div>
     </div>
@@ -206,9 +140,6 @@
         });
 
     </script>
-
-
-
 </body>
 
 </html>

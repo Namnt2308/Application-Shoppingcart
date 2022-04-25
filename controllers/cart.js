@@ -32,7 +32,7 @@ router.get("/viewCart", async (req, res) => {
   });
   router.get("/payCart", async (req, res) => {
     const orderDB = await dbHandler.getCart(req.session.user.name);
-    if (orderDB == null) {
+    if (orderDB == null )  {
       res.redirect("/");
     }
     const tax = orderDB.totalPrice / 100;
@@ -52,4 +52,5 @@ router.get("/viewCart", async (req, res) => {
     req.session["cart"] = null;
     res.redirect("/shoppingCart/viewCart");
   });
+  
   
