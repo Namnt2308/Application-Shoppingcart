@@ -42,22 +42,8 @@
         <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
 
       </div>
-
-
     </div>
-
-    <div class="header-2">
-      <nav class="navbar">
-        <a href="/">home</a>
-        <a href="/#featured">Best Selling Book</a>
-        <a href="/#arrivals">All book</a>
-
-      </nav>
-    </div>
-
   </header>
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top py-2"></nav>
-  <div class="shopvard"> -->
   <div class="far"></div>
   <div class="container">
     <table class="table-hover table-striped">
@@ -75,7 +61,6 @@
               <p>{{name}}</p>
               <small>price: {{price}}</small><br>
               <button type="button" onclick="return confirm('Are you sure to remove this book?')"><a href="/shoppingCart/delete?id={{_id}}">remove</a></button>
-              
             </div>
           </div>
         </td>
@@ -89,7 +74,6 @@
         <tr>
           <td>Total</td>
           <td>{{order.totalPrice}}</td>
-
         </tr>
         <tr>
           <td><a href="/shoppingCart/payCart"><button type="submit" class="btn" onclick="return confirm('Are you sure to pay cart?')">Proceed to Pay</button></a></td>

@@ -161,7 +161,6 @@ router.post('/updatebook', async (req, res) => {
     res.redirect('/admin/product')
 })
 //update profile for admin
-
 router.get('/updateprofile', async (req, res)=>{
     const result = await dbHandler.getUser(req.session.user.name)
     res.render('Updateprofileadmin', {user:result})

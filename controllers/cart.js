@@ -13,7 +13,7 @@ router.use((req, res, next) => {
     } else {
       res.sendStatus(404);
     }
-  } else {
+} else {
     res.redirect("/login");
   }
 });
