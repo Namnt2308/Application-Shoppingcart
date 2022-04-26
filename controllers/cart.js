@@ -76,7 +76,11 @@ router.get("/Pushase", async (req, res) => {
     orderDB: orderDB,
   });
 });
-
+router.get("/Cancel", async (req, res) => {
+  const id = req.query.id;
+  await dbHandler.deleteDocumentById("Customer Order",id)
+  res.redirect("/shoppingCart/Pushase");
+});
 router.get("/updateProfile", async (req, res) => {
     const user = await dbHandler.getUser(req.session.user.name);
     res.render("UpDateProfile", { user: user });
