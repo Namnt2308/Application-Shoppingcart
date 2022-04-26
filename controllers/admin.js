@@ -21,25 +21,19 @@ router.use((req, res, next) => {
 
 //neu request la: /admin
 router.get('/', async (req, res) => {
-    if (req.query.sortBy == "today") { //if user choose today
-        res.redirect("/admin/today");
-    } else if (req.query.sortBy == 'week') { //if user choose week
-        res.redirect("/admin/week");
-    } else {
-        const customerOrder = await dbHandler.getAll("Customer Order") //get all database in Customer order and set is customerOrder
-        customerOrder.forEach((element) => { //use loop in Customer Order 
-            element.time = element.time.toLocaleString("vi"); //convert time to vietnam
-            element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
-            element.books.forEach(e => { //use loop in books in customerorder
-                element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
-            })
-        });
-        res.render('adminPage', {
-            customerOrder: customerOrder,//truyen vao adminPage giá trị của customerorder
-            user: req.session.user//
+    const customerOrder = await dbHandler.getAll("Customer Order") //get all database in Customer order and set is customerOrder
+    customerOrder.forEach((element) => { //use loop in Customer Order 
+        element.time = element.time.toLocaleString("vi"); //convert time to vietnam
+        element.itemString = ""; //tao bien itemString de hien thi cac phan tu trong element (them item va amount)
+        element.books.forEach(e => { //use loop in books in customerorder
+            element.itemString += e.name + " - (" + e.qty + ")"; //display name + qty 
         })
-    // }
-}})
+    });
+    res.render('adminPage', {
+        customerOrder: customerOrder,//truyen vao adminPage giá trị của customerorder
+        user: req.session.user//
+    })
+})
 
 
 router.get('/deleteCustomer/:id', async(req, res) => {
