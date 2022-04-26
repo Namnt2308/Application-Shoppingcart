@@ -27,7 +27,7 @@
     <nav class="navbar">
         <a href="#home">home</a>
         <a href="#products">products</a>
-        <a href="#categories">categories</a>
+        <a href="/shoppingCart/Pushase">Purchase</a>
     </nav>
 
     <form action="/search?=" class="search-form" method="get">
@@ -65,10 +65,7 @@
    <section class="featured" id="featured">
 
         <h1 class="heading"> <span>The hottest product</span> </h1>
-
-        <div class="swiper featured-slider">
-
-            <div class="swiper-wrapper">
+            <div class="swiper featured-slider">
                 {{#each hotBook}}
                 <div class="swiper-slide box">
                     <a href="/details?id={{_id}}" class="swiper-slide box" style="display:none"></a>
@@ -85,13 +82,10 @@
                 </div>
                 {{/each}}
             </div>
-
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-
         </div>
-
-    </section>
+</section>
 
 <!-- features section ends -->
 
@@ -123,12 +117,9 @@
             </div>
              {{/each}}
         </div>
-
-
-<!-- products section ends -->
-
-<!-- categories section starts  -->
-<div class="swiper arrivals-slider">
+{{!-- 
+        </div>
+        <div class="swiper arrivals-slider">
             <div class="swiper-wrapper">
                 {{#each ITbooks}}
                 <a href="/details?id={{_id}}" class="swiper-slide box">
@@ -141,12 +132,66 @@
                     </div>
                 </a>
                 {{/each}}
-            </div> 
+            </div> --}}
             
+        {{!-- <div class="swiper arrivals-slider">
+            <div class="swiper-wrapper">
+                {{#each Action}}
+                <a href="/details?id={{_id}}" class="swiper-slide box">
+                    <div class="image">
+                        <img src="{{pic}}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{name}}</h3>
+                        <div class="price">{{price}}</div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+        </div> --}}
+    </div>
+{{!-- <section class="categories" id="categories">
+
+    <h1 class="heading"> product <span>categories</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="image/cat-1.png" alt="">
+            <h3>vegitables</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/cat-2.png" alt="">
+            <h3>fresh fruits</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/cat-3.png" alt="">
+            <h3>dairy products</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/cat-4.png" alt="">
+            <h3>fresh meat</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+    </div>
+
+</section> --}}
+
 <!-- categories section ends -->
 
 <!-- review section starts  -->
-
+{{!-- 
 <section class="review" id="review">
 
     <h1 class="heading"> customer's <span>review</span> </h1>
@@ -211,12 +256,12 @@
 
     </div>
 
-</section>
+</section> --}}
 
 <!-- review section ends -->
 
 <!-- blogs section starts  -->
-
+{{!-- 
 <section class="blogs" id="blogs">
 
     <h1 class="heading"> our <span>blogs</span> </h1>
@@ -264,7 +309,13 @@
 
     </div>
 
-</section>
+</section>>
+</section> --}}
+
+<!-- products section ends -->
+
+<!-- categories section starts  -->
+{{!--  --}}
 
 <!-- blogs section ends -->
 
@@ -285,6 +336,12 @@
             </div>
         </div>
 
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> namntgch190885@fpt.edu.vn</a>
+        </div>
 
         <div class="box">
             <h3>quick links</h3>
