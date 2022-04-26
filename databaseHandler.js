@@ -120,7 +120,16 @@ async function dosearch(condition,collectionName){
   const results = await dbo.collection(collectionName).find({name:searchCondition}).toArray();
   return results;
 }
+async function getAllFeedback() {
+  const result = await getAll("Feedback");
+  result.forEach(
+    (e) => (e.timeString = new Date(e.time).toLocaleString("vi-VN"))
+  );
+  return result;
+}
+
 module.exports = {
+  getAllFeedback,
   dosearch,
   SortupPrice,
   SortdownPrice,

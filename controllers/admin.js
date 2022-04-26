@@ -223,5 +223,9 @@ router.post('/search', async (req, res) => {
     const result = await dbHandler.dosearch(searchText,"Book")
     res.render('Admin_Product',{book:result})
 })
+router.get("/feedbackManage", async (req, res) => {
+    let result = await dbHandler.getAllFeedback();
+    res.render('adminPage', { feedback: result, user: req.session.user })//truyền vào
+});
 
 module.exports = router;
