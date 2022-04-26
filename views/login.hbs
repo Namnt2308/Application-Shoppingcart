@@ -35,6 +35,9 @@
                                 <div class="card-body p-4 p-lg-5 text-black">
 
                                     <form method="POST" action="/login">
+                                        <center>
+                                            <h2 style="color: red;">{{errorMsg}}</h2>
+                                        </center>
 
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -63,6 +66,10 @@
                                                 <option value="Customer">Customer</option>
                                                 <option value="Admin">Admin</option>
                                             </select>
+                                            <div class="checkbox">
+                                                <input type="checkbox" name="" id="remember-me" />
+                                                <label for="remember-me"> Remember me</label>
+                                            </div>
                                         </div>
 
                                         <div class="pt-1 mb-4">
