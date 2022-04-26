@@ -41,7 +41,7 @@
                 <ul class="nav flex-column menu-link">
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fal fa-book book-icn"> </i>
-                            <p class="text-icn"> Dashboard</p>
+                            <p class="text-icn"> Manage Category</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -74,8 +74,8 @@
 
 
                 <div class="inner-section">
-                    <h2 class="page-title">Dashboard</h2>
-                     <a href="/admin/addbook" class="btn btn-primary">Add Book</a>
+                    <h2 class="page-title">Manage Category</h2>
+                     <a href="/admin/addcategory" class="btn btn-primary">Add Category</a>
                         </div>
                                 <div class="table-responsive">
                                     <table class="table">
@@ -89,8 +89,8 @@
                                             <tr>
                                                 <td>{{_id}}</td>
                                                 <td>{{name}}</td>
-                                                <td class="Upadte"><a class="btn btn-success" style="margin-right:5px;flex:1" href="/admin/updatebook?id={{_id}}">Edit</a> </td>
-                                                <td class="Delete"><a class="btn btn-danger" style="margin-right:5px;flex:1" onclick="return confirm('Are your sure?')" href="/admin/deletebook?id={{_id}}">Delete</a></td>
+                                                <td class="Upadte"><a class="btn btn-success" style="margin-right:5px;flex:1" href="/admin/updatecategory?id={{_id}}">Update</a> </td>
+                                                <td class="Delete"><a class="btn btn-danger" style="margin-right:5px;flex:1" onclick="return confirm('Are your sure?')" href="/admin/deletecategory?id={{_id}}">Delete</a></td>
                                             </tr>
                                             {{/each}}
                                         </tbody>
