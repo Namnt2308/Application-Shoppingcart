@@ -218,6 +218,10 @@ router.get('/sapxeptang',async (req,res)=> {
     const sapxep = await dbHandler.SortupPrice("Book")
     res.render('Admin_Product',{book: sapxep})
 })
+router.get('/sapxepgiam',async (req,res)=>{
+    const sapxep= await dbHandler.SortdownPrice("Book")
+    res.render('Admin_Product',{book: sapxep})
+})
 router.get('/deleteCustomer/:id', async(req, res) => {
     console.log(req.params.id)
     await dbHandler.deleteDocumentById('Users', req.params.id);
