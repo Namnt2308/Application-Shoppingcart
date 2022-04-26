@@ -23,3 +23,16 @@ router.get("/", async (req, res) => {
 
     res.render("feedback", {info:info, list:result}); 
 });
+router.post("/sendfeedback", (req, res) => {
+    const feedback= req.body.txtFeedback;
+    const name= req.body.name
+    const obj = {
+        name: name,
+        feedback: feedback,
+        username: req.session.user.name, 
+        time: new Date().toISOString(),
+    };
+    dbHandler.insertObject("Feedback", obj);
+    res.redirect("/");
+});
+module.exports = router;
