@@ -114,7 +114,14 @@ async function SortupPrice(collectionName) {
   const results = await dbo.collection(collectionName).find({}).sort({price:1}).toArray()   
   return results
 }
+async function dosearch(condition,collectionName){
+  const dbo = await getdbo();
+  const searchCondition = new RegExp(condition,'i')
+  const results = await dbo.collection(collectionName).find({name:searchCondition}).toArray();
+  return results;
+}
 module.exports = {
+  dosearch,
   SortupPrice,
   SortdownPrice,
   deleteOne,

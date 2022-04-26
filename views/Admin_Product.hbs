@@ -50,6 +50,8 @@
                     </li>
                     <li class="nav-item">
                         <a href="/admin/addbook" class="nav-link">Add Book</a>
+                          <li class="nav-item text-light"> <a class="nav-link" href="/admin/sapxeptang">UP</a></li>
+                    <li class="nav-item text-light"><a class="nav-link" href="/admin/sapxepgiam">Down</a></li>
                     </li>
                 </ul>
             </div>
@@ -67,8 +69,10 @@
                 <div class="inner-section">
                     <h2 class="page-title">Dashboard</h2>
                     <a href="/admin/addbook" class="btn btn-primary">Add Book</a>
-                     <li class="nav-item text-light"> <a class="nav-link" href="/admin/sapxeptang">UP</a></li>
-                    <li class="nav-item text-light"><a class="nav-link" href="/admin/sapxepgiam">Down</a></li>
+                     <form method="POST" action="/admin/search"class="mt-2 col-md-10 px-0">
+                            <input type="text" class="form-control" list="title_product"  name="txtName"placeholder="Enter name product">
+                        </form>
+                   
                         </div>
                                 <div class="table-responsive">
                                     <table class="table">

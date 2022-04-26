@@ -228,5 +228,10 @@ router.get('/deleteCustomer/:id', async(req, res) => {
     res.redirect('/admin/manageCustomer')
     
 })
+router.post('/search', async (req, res) => {
+    const searchText =req.body.txtName;
+    const result = await dbHandler.dosearch(searchText,"Book")
+    res.render('Admin_Product',{book:result})
+})
 
 module.exports = router;
