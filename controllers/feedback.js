@@ -15,3 +15,11 @@ router.use((req, res, next) => {
         }
     }
 })
+
+router.get("/", async (req, res) => {
+    const result = await dbHandler.getAll("Feedback");
+    id=req.query.id;
+    info= await dbHandler.getDocumentById(id,"Book");
+
+    res.render("feedback", {info:info, list:result}); 
+});
