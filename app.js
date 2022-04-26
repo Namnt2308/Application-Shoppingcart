@@ -34,11 +34,6 @@ app.use(
   })
 );
 
-// app.get('/', requiresLogin, (req, res) => {
-//     const user = req.session['user']
-//     res.render('index', {userInfo : user})
-// })
-
 app.get("/logout", (req, res) => {
   req.session.user = null;
   res.redirect("/");
@@ -89,6 +84,8 @@ app.post("/login", async (req, res) => {
     }
   }
 });
+const userController = require("./controllers/customer");
+app.use("/", userController);
 
 const shoppingCart = require("./controllers/cart");
 app.use("/shoppingCart", shoppingCart);
