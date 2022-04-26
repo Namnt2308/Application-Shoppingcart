@@ -62,8 +62,7 @@
                                 <td>{{time}}</td>
 
                                 <td>{{totalPrice}}$</td>
-                                <td>{{Status}} <a href="/shoppingCart/UpdateSt?id={{_id}}"> <button type="sumbit">
-                                            Cancel</button> </a></td>
+                                <td>{{Status}} <a  class="btn btn-danger" style="margin-left:20px;" href="/shoppingCart/Cancel?id={{_id}}"> Cancel </a></td>
 
                             </tr>
                             {{/each}}
