@@ -1,143 +1,68 @@
-const express = require("express");
+const bcrypt = require("bcryptjs/dist/bcrypt");
+const async = require("hbs/lib/async");
+const { MongoClient, ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema; 
 
-const dbHandler = require("../databaseHandler");
-const router = express.Router();
-router.use(express.static("public"));
+const URL =
+  "mongodb+srv://tiennam01:23082001@cluster0.n2pwj.mongodb.net/test";
+const DATABASE_NAME = "FPTBook-AsmApplication-Group3";
 
-router.get("/", async (req, res) => {
-  const comic = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "62572ba5513e4209ef0caece"
-  );
-  const ITbook = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "62572bb6513e4209ef0caecf"
-  );
-  const hotBook = await dbHandler.searchHotBooks();
-  const Action= await dbHandler.searchObjectbyCategory(
-    "Book",
-    "625735817c737dcc7158fc7c"
-  );
-  if (!req.session.user) {
-    res.render("index", { comics: comic, ITbooks: ITbook, hotBook: hotBook,Action:Action });
-  } else {
-    res.render("index", {
-      comics: comic,
-      ITbooks: ITbook,
-      hotBook: hotBook,
-      Action:Action,
-      user: req.session.user,
-    });
-  }
-});
-
-router.get("/search", async (req, res) => {
-  const comic = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "62572ba5513e4209ef0caece"
-  );
-  const ITbook = await dbHandler.searchObjectbyCategory(
-    "Book",
-    "62572bb6513e4209ef0caecf"
-  );
-  const Action= await dbHandler.searchObjectbyCategory(
-    "Book",
-    "625735817c737dcc7158fc7c"
-  );
-  const searchInput = req.query.searchInput;
-  if (isNaN(Number.parseFloat(searchInput)) == false) {
-    await SearchObject(
-      req,
-      searchInput,
-      res,
-      comic,
-      ITbook,
-      Action,
-      dbHandler.searchObjectbyPrice,
-      "Book",
-      Number.parseFloat(searchInput),
-      " VND"
-    );
-  } else {
-    await SearchObject(
-      req,
-      searchInput,
-      res,
-      comic,
-      ITbook,
-      Action,
-      dbHandler.searchObjectbyName,
-      "Book",
-      searchInput,
-      ""
-    );
-  }
-});
-
-async function SearchObject(
-  req,
-  searchInput,
-  res,
-  comic,
-  ITbook,
-  Action,
-  dbFunction,
-  collectionName,
-  searchInput,
-  mess
-) {
-  const resultSearch = await dbFunction(collectionName, searchInput);
-  if (resultSearch.length != 0) {
-    if (!req.session.user) {
-      res.render("search", {
-        searchBook: resultSearch,
-        comics: comic,
-        ITbooks: ITbook,
-      });
-    } else {
-      res.render("search", {
-        searchBook: resultSearch,
-        comics: comic,
-        ITbooks: ITbook,
-        Action:Action,
-        user: req.session.user,
-      });
-    }
-  } else {
-    if (!req.session.user) {
-      const message = "Not found " + searchInput + mess;
-      res.render("search", {
-        comics: comic,
-        ITbooks: ITbook,
-        Action:Action,
-        errorSearch: message,
-      });
-    } else {
-      const message = "Not found " + searchInput + mess;
-      res.render("search", {
-        comics: comic,
-        ITbooks: ITbook,
-        Action:Action,
-        errorSearch: message,
-        user: req.session.user,
-      });
-    }
-  }
+async function getdbo() {
+  const client = await MongoClient.connect(URL);
+  const dbo = client.db(DATABASE_NAME);
+  return dbo;
 }
 
-router.get("/details", async (req, res) => {
-  const id = req.query.id;
-  const result = await dbHandler.getDocumentById(id, "Book");
-  const category = await dbHandler.getDocumentById(result.category, "Category");
-  if (!req.session.user) {
-    res.render("product_Detail", { details: result, category: category });
-  } else {
-    res.render("product_Detail", {
-      details: result,
-      category: category,
-      user: req.session.user,
-    });
-  }
-});
+async function insertObject(collectionName, objectToInsert) {
+  const dbo = await getdbo();
+  const newObject = await dbo
+    .collection(collectionName)
+    .insertOne(objectToInsert);
+  console.log(
+    "Gia tri id moi duoc insert la: ",
+    newObject.insertedId.toHexString()
+  );
+}
 
-module.exports = router;
+async function searchObjectbyName(collectionName, name) {
+  const dbo = await getdbo();
+  const result = await dbo
+    .collection(collectionName)
+    .find({ name: { $regex: name, $options: "i" } })
+    .toArray();
+  return result;
+}
+async function getAll(collectionName) {
+  const dbo = await getdbo();
+  const result = await dbo
+    .collection(collectionName)
+    .find({})
+    .sort({ time: -1 })
+    .toArray();
+  return result;
+}
+async function deleteDocumentById(collectionName, id) {
+  const dbo = await getdbo();
+  await dbo.collection(collectionName).deleteOne({ _id: ObjectId(id) });
+}
+
+async function deleteDocument(collectionName, objectToDelete) {
+  const dbo = await getdbo();
+  await dbo.collection(collectionName).deleteOne(objectToDelete)
+}
+
+async function getDocumentById(id, collectionName) {
+  const dbo = await getdbo();
+  const result = await dbo
+    .collection(collectionName)
+    .findOne({ _id: ObjectId(id) });
+  return result;
+}
+
+async function updateDocument(id, updateValues, collectionName) {
+  const dbo = await getdbo();
+  await dbo
+    .collection(collectionName)
+    .updateOne({ _id: ObjectId(id) }, updateValues);
+}
