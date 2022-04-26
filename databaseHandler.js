@@ -75,6 +75,19 @@ async function saveDocument(collectionName, id, newValue) {
   const dbo = await getDbo();
   await dbo.collection(collectionName).save({ _id: ObjectId(id), newValue });
 }
+
+
+async function searchObjectbyPrice(collectionName, price) {
+  const dbo = await getdbo();
+  const result = await dbo
+    .collection(collectionName)
+    .find({ price: price })
+    .toArray();
+  return result;
+}
+
+
+
 async function deleteOne(collectionName, deleteObject) {
   const dbo = await getdbo();
   const result = await dbo.collection(collectionName).deleteOne(deleteObject);
@@ -86,6 +99,8 @@ async function deleteOne(collectionName, deleteObject) {
 }
 module.exports = {
   deleteOne,
+  searchObjectbyPrice,
+
   getDocumentByName,
   saveDocument,
   searchObjectbyName,
