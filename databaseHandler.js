@@ -75,7 +75,17 @@ async function saveDocument(collectionName, id, newValue) {
   const dbo = await getDbo();
   await dbo.collection(collectionName).save({ _id: ObjectId(id), newValue });
 }
+async function deleteOne(collectionName, deleteObject) {
+  const dbo = await getdbo();
+  const result = await dbo.collection(collectionName).deleteOne(deleteObject);
+  if (result.deletedCount > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 module.exports = {
+  deleteOne,
   getDocumentByName,
   saveDocument,
   searchObjectbyName,
