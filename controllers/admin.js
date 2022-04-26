@@ -66,9 +66,6 @@ router.get('/manageCustomer', async (req, res) => {
     res.render('adminPage', { Customer: arr})//truyền vào property Customer với values =arr
     
 })
-
-
-
 // /deleteCustomer/abcxyz
 router.get('/deleteCustomer/:id', async(req, res) => {
     await dbHandler.deleteDocumentById('Users', req.params.id);//dugf dDBI để xóa 1 doc với tham số là req.pấm.id
@@ -140,6 +137,30 @@ router.get('/category', async (req, res) => {
     res.render("Admin_Category", {category:category})
     
 });
+// edit category
+router.get('/updatecategory', async (req, res) => {
+    const id = req.query.id
+    const result = await getDocumentById(id,"Category")
+    
+    res.render('updatecategory', {category:result})
+})
+router.post('/updatecategory', async (req, res) => {
+    const nameInput = req.body.txtName
+    const id = req.body.txtid
+    const UpdateName = {$set: {name:nameInput}}
+
+    await dbHandler.updateDocument(id, UpdateName,"Category")
+    res.redirect('/admin/category')
+})
+
+//delete category
+router.get('/deletecategory', async (req, res) => {
+    const id = req.query.id
+    console.log(id)
+    await dbHandler.deleteDocumentById("Category", id)
+    res.redirect('/admin/category')
+})
+
 //update book in product
 router.get('/updatebook', async (req, res) => {
     const id = req.query.id
