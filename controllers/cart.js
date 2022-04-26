@@ -65,6 +65,17 @@ router.get("/viewCart", async (req, res) => {
     const user = await dbHandler.getUser(req.session.user.name);
     res.render("profile", { user: user });
 });
+router.get("/Pushase", async (req, res) => {
+  const orderDB = await dbHandler.searchOderByUser(
+    "Customer Order",
+    req.session.user.name
+  );
+  console.log(orderDB, req.session.user);
+  res.render("Pushase", {
+    user: req.session.user,
+    orderDB: orderDB,
+  });
+});
 
 router.get("/updateProfile", async (req, res) => {
     const user = await dbHandler.getUser(req.session.user.name);
