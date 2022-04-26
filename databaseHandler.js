@@ -86,7 +86,14 @@ async function searchObjectbyPrice(collectionName, price) {
   return result;
 }
 
-
+async function searchObjectbyCategory(collectionName, category) {
+  const dbo = await getdbo();
+  const result = await dbo
+    .collection(collectionName)
+    .find({ category: ObjectId(category) })
+    .toArray();
+  return result;
+}
 
 async function deleteOne(collectionName, deleteObject) {
   const dbo = await getdbo();
@@ -100,7 +107,7 @@ async function deleteOne(collectionName, deleteObject) {
 module.exports = {
   deleteOne,
   searchObjectbyPrice,
-
+  searchObjectbyCategory,
   getDocumentByName,
   saveDocument,
   searchObjectbyName,
