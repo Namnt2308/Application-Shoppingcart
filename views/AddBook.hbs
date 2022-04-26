@@ -16,24 +16,21 @@
         <h5>Product Name</h5>
         <div class="input-group mb-3-center">
             <input type="text" name="txtName" id="txtName" placeholder="enter Book" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-            {{!-- <label style="color: red;">{{nameError}}</label> --}}
         </div>
         <h5>Description</h5>
         <div>
-         <input type="text" name="txtDescription" class="box" placeholder="enter Description" id="txtDescription" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" name="txtDescription" class="box" placeholder="enter Description" id="txtDescription" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
-         
         <h5>Price</h5>
         <div class="input-group mb-3">
             <input type="text" placeholder="enter Price" name="txtPrice" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-            <label style="color: red;">{{priceError}}</label>
         </div>
         <h5>Image Url</h5>
         <div class="input-group mb-3">
             <input type="text" name="txtImage" id="txtImage" placeholder="enter Image" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             <br>
-            <label style="color: red;">{{urlError}}</label>
         </div>
+        
         <div class="login__decentralization">
                 <select name="Category" class="decentralization" id="Category">
                     {{#each categoryname}}
