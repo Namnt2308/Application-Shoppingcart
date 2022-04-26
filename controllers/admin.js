@@ -66,10 +66,6 @@ router.get('/manageCustomer', async (req, res) => {
     res.render('adminPage', { Customer: arr})//truyền vào property Customer với values =arr
     
 })
-router.get('/sapxepgiam',async (req,res)=>{
-    const sapxep= await dbHandler.SortdownPrice("Book")
-    res.render('Admin_Product',{book: sapxep})
-})
 // /deleteCustomer/abcxyz
 router.get('/deleteCustomer/:id', async(req, res) => {
     await dbHandler.deleteDocumentById('Users', req.params.id);//dugf dDBI để xóa 1 doc với tham số là req.pấm.id
