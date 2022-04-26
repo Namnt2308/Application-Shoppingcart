@@ -109,7 +109,13 @@ async function SortdownPrice(collectionName) {
   const results = await dbo.collection(collectionName).find({}).sort({price:-1}).toArray()   
   return results
 }
+async function SortupPrice(collectionName) {
+  const dbo = await getdbo()
+  const results = await dbo.collection(collectionName).find({}).sort({price:1}).toArray()   
+  return results
+}
 module.exports = {
+  SortupPrice,
   SortdownPrice,
   deleteOne,
   searchObjectbyPrice,
