@@ -1,5 +1,5 @@
 const express = require('express')
-const { insertObject, getAll, deleteDocumentById, getDocumentById, updateDocument, } = require('../databaseHandler')
+const { insertObject, getAll,SortdownPrice, deleteDocumentById, getDocumentById, updateDocument, } = require('../databaseHandler')
 const router = express.Router()
 const dbHandler = require("../databaseHandler");
 const { ObjectId } = require("mongodb");
@@ -65,6 +65,10 @@ router.get('/manageCustomer', async (req, res) => {
     })
     res.render('adminPage', { Customer: arr})//truyền vào property Customer với values =arr
     
+})
+router.get('/sapxepgiam',async (req,res)=>{
+    const sapxep= await dbHandler.SortdownPrice("Book")
+    res.render('Admin_Product',{book: sapxep})
 })
 // /deleteCustomer/abcxyz
 router.get('/deleteCustomer/:id', async(req, res) => {

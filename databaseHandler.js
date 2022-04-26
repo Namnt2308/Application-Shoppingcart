@@ -104,7 +104,13 @@ async function deleteOne(collectionName, deleteObject) {
     return false;
   }
 }
+async function SortdownPrice(collectionName) {
+  const dbo = await getdbo()
+  const results = await dbo.collection(collectionName).find({}).sort({price:-1}).toArray()   
+  return results
+}
 module.exports = {
+  SortdownPrice,
   deleteOne,
   searchObjectbyPrice,
   searchObjectbyCategory,
