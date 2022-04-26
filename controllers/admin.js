@@ -196,5 +196,25 @@ router.post("/updateprofile", async (req,res)=>{
     res.redirect('/admin')
 })
 
+router.get('/manageCustomer', async (req, res) => {
+    result = await dbHandler.getAll("Users");
+    const arr = result.filter((element) => {
+        return element.role === 'Customer'
+    });
+    arr.forEach((element, index) => {
+        element.index = index+1;
+        delete element.password;
+        delete element.role;
+    })
+    res.render('adminPage', { Customer: arr})
+    
+})
+
+router.get('/deleteCustomer/:id', async(req, res) => {
+    console.log(req.params.id)
+    await dbHandler.deleteDocumentById('Users', req.params.id);
+    res.redirect('/admin/manageCustomer')
+    
+})
 
 module.exports = router;
