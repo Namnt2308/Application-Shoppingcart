@@ -66,3 +66,23 @@ async function updateDocument(id, updateValues, collectionName) {
     .collection(collectionName)
     .updateOne({ _id: ObjectId(id) }, updateValues);
 }
+async function getDocumentByName(collectionName, name) {
+  const dbo = await getdbo();
+  const result = await dbo.collection(collectionName).findOne({ name: name });
+  return result;
+}
+async function saveDocument(collectionName, id, newValue) {
+  const dbo = await getDbo();
+  await dbo.collection(collectionName).save({ _id: ObjectId(id), newValue });
+}
+module.exports = {
+  getDocumentByName,
+  saveDocument,
+  searchObjectbyName,
+  insertObject,
+  getAll,
+  deleteDocumentById,
+  getDocumentById,
+  updateDocument,
+  deleteDocument,
+};
